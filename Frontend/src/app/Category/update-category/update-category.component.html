@@ -1,0 +1,23 @@
+   
+
+    <div class="card">
+        <h5 class="card-header">Update Category</h5>
+        <div class="card-body">
+            <form class="" [formGroup]="addCategoryForm" (ngSubmit)="validate()">
+              
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingLN" placeholder="Category name"
+                        formControlName="name" maxlength="30">
+                    <label for="floatingInput">{{category.name}}</label>
+                    <mat-error *ngIf="addCategoryForm.get('lastName')?.hasError('required')">Last Name is required</mat-error>
+                    <mat-error *ngIf="addCategoryForm.get('lastName')?.hasError('minlength')">Last Name should be at least 3
+                        characters long</mat-error>
+                </div>
+                
+                
+                <div class="col-auto">
+                    <button type="submit" style="float: right;" class="btn btn-primary mb-3" (click)="validate()" [disabled]="!addCategoryForm.valid">Update Category</button>
+                </div>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,57 @@
+<div class="card">
+  <button *ngIf="!addstatus" class="btn btn-primary" (click)="createTrue()">Create a new category</button>
+</div>
+
+<div class="card" *ngIf="addstatus">
+  <h5 class="card-header">Create Category</h5>
+  <div class="card-body">
+    <form class="" [formGroup]="addCategoryForm" (ngSubmit)="addCategory()">
+
+      <div class="form-floating">
+        <input type="text" class="form-control" id="floatingLN" placeholder="Category name" formControlName="name"
+          maxlength="30">
+        <label for="floatingInput">Category Name</label>
+        <mat-error *ngIf="addCategoryForm.get('lastName')?.hasError('required')">Category Name is required</mat-error>
+        <mat-error *ngIf="addCategoryForm.get('lastName')?.hasError('minlength')">Category Name should be at least 3
+          characters long</mat-error>
+      </div>
+
+
+      <div class="card">
+        <button type="submit" style="float: inline-end;" class="btn btn-success mb-3" (click)="addCategory()"
+          [disabled]="!addCategoryForm.valid">Create Category</button>
+        <button type="submit" style="float: inherit;" class="btn btn-danger mb-3" (click)="Cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <h5 class="card-header">Category list</h5>
+  <div class="card-body">
+
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+
+          <th scope="col">Category Name</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cat of catListe">
+
+          <td>{{cat.name}}</td>
+          <td><button class="btn btn-primary" (click)="openDialog(cat)">Update</button></td>
+          <td><button class="btn btn-danger" (click)="onDelete(cat)">Delete</button></td>
+
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>

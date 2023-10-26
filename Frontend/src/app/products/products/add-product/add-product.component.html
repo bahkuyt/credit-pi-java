@@ -1,0 +1,49 @@
+<div class="card" >
+    <h5 class="card-header">Create Category</h5>
+    <div class="card-body">
+      <form class="" [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+  
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingLN" placeholder="Category name" formControlName="name"
+            maxlength="30">
+          <label for="floatingInput">Product Name</label>
+          <mat-error *ngIf="addProductForm.get('lastName')?.hasError('required')">Last Name is required</mat-error>
+          <mat-error *ngIf="addProductForm.get('lastName')?.hasError('minlength')">Last Name should be at least 3
+            characters long</mat-error>
+        </div>
+
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingDisc" placeholder="Category name" formControlName="description"
+              maxlength="200">
+            <label for="floatingInput">Add a discreption</label>
+            
+             
+          </div>
+
+          <div class="form-floating">
+            
+            
+            <input type="date" class="form-control" id="floatingDate" placeholder="Category name" formControlName="Release"
+              >
+            <label for="floatingInput">Release Date Name</label>
+            
+              
+          </div>
+          <div class="form-floating">
+            <select class="form-select form-select-lg mb-3" aria-label="please select a category"  formControlName="Category" (ngModelChange)="assignCorporationToManage($event)">
+                <option *ngFor="let cat of catListe; " [ngValue]="cat">{{cat.name}}</option>
+               
+              </select>
+              </div>
+
+
+  
+  
+        <div class="card">
+          <button type="submit" style="float: inline-end;" class="btn btn-success mb-3" (click)="addProduct()"
+            [disabled]="!addProductForm.valid">Create Category</button>
+          <button type="submit" style="float: inherit;" class="btn btn-danger mb-3" (click)="Cancel()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>

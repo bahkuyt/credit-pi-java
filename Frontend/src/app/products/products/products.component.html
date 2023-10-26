@@ -1,0 +1,35 @@
+<div class="card">
+    <h5 class="card-header">Product list</h5>
+    <div class="card-body">
+  
+  
+      <table class="table table-hover">
+        <thead>
+          <tr>
+  
+            <th scope="col">Product Name</th>
+            <th scope="col">Product Description</th>
+            <th scope="col">Product Release Date</th>
+            <th scope="col">Product category</th>
+            <th scope="col"></th>
+  
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of pListe">
+  
+            <td>{{p.name}}</td>
+            <td>{{p.description}}</td>
+            <td>{{p.Release}}</td>
+            <td *ngIf="p.categories.length > 0">{{p.categories[0].name}}</td>
+            <td *ngIf="!(p.categories.length > 0)">No Category selected</td>
+            
+            <td><button class="btn btn-danger" (click)="onDelete(p)">Delete</button></td>
+  
+          </tr>
+  
+        </tbody>
+      </table>
+  
+    </div>
+  </div>
